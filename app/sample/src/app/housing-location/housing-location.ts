@@ -10,6 +10,6 @@ import { Component } from '@angular/core';
   `,
   styleUrl: './housing-location.css'
 })
-export class HousingLocation {
+export class HousingComponent {
 
 }
