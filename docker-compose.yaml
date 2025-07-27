@@ -1,0 +1,14 @@
+version: '3'
+services:
+  sample-angular:
+    image: sample-angular-image
+    container_name: sample-angular-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "ng serve --host=0.0.0.0"
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./app:/app
+    working_dir: /app/sample
