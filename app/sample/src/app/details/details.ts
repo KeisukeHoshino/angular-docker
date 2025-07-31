@@ -55,10 +55,13 @@ export class DetailComponent {
   housingLocation: HousingLocation | undefined;
 
   constructor() {
-    const housingLocationId = Number(this.route.snapshot.params['id']);
-    console.log(housingLocationId);
-    this.housingLocation =
-      this.housingService.getHousingLocationById(housingLocationId);
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+
+    this.housingService
+      .getHousingLocationById(housingLocationId)
+      .then((housingLocation) => {
+        this.housingLocation = housingLocation;
+      });
   }
 
   applyForm = new FormGroup({

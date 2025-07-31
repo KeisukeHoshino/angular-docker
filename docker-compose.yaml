@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   sample-angular:
     image: sample-angular-image
@@ -12,3 +12,12 @@ services:
     volumes:
       - ./app:/app
     working_dir: /app/sample
+
+  json-server:
+    image: node:18-alpine
+    container_name: json-server-container
+    volumes:
+      - ./app/sample/db.json:/data/db.json
+    command: sh -c "npm install -g json-server && json-server --watch /data/db.json --host 0.0.0.0 --port 3001"
+    ports:
+      - "3001:3001"
